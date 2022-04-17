@@ -48,9 +48,10 @@ while start <= end:
     mid = (start + end) // 2
 
     if bfs(begin=dot1, destination=dot2, max_cargo=mid):
+        result = mid
         start = mid + 1
     else:
         end = mid - 1
 
 if __name__ == '__main__':
-    print(end)
+    print(result)
