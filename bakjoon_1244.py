@@ -24,17 +24,25 @@ if __name__ == '__main__':
             distance = 0
             start = lst[i][1] - 1
             while not stop:
-                if switch[start - distance] == switch[start + distance]:
-                    if switch[start - distance] == 0:
-                        switch[start - distance] = 1
-                        switch[start + distance] = 1
-                    elif switch[start - distance] == 1:
-                        switch[start - distance] = 0
-                        switch[start + distance] = 0
+
+                left = start - distance
+                right = start + distance
+                if left < 0 or right > length - 1:
+                    break
+
+                if switch[left] == switch[right]:
+                    if switch[left] == 0:
+                        switch[left] = 1
+                        switch[right] = 1
+                    elif switch[left] == 1:
+                        switch[left] = 0
+                        switch[right] = 0
                     distance += 1
-                    if start - distance <= 0 or start + distance > length - 1:
-                        break
+
                 else:
                     stop = True
 
-    print(*switch)
+    for i in range(len(switch)):
+        print(switch[i], end=' ')
+        if (i + 1) % 20 == 0 and i != 1:
+            print("")
